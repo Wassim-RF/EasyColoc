@@ -27,9 +27,8 @@
             $newUser = $registerServices->create($data);
 
             Auth::login($newUser);
-
             $registerRequest->session()->regenerate();
 
-            return redirect('/home')->with('success' , 'Vous creer votre compte en succe');
+            return redirect('/home')->with('success' , "Votre compte a été créé avec succès.");
         }
     }
