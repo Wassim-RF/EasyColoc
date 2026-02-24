@@ -17,11 +17,11 @@
 
             if (!$user) return redirect('register')->with('error' , `Aucun compte n'est associé à cet email.`);
 
-            if (!Hash::check($loginRequest->passoword , $user->password)) return redirect()->back()->with('error' , "Le mot de passe est incorrect.");
+            if (!Hash::check($loginRequest->password , $user->password)) return redirect()->back()->with('error' , "Le mot de passe est incorrect.");
 
             Auth::login($user);
             $loginRequest->session()->regenerate();
 
-            return redirect('home')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
+            return redirect('/home')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
         }
     }
