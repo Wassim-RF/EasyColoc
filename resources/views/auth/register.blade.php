@@ -1,5 +1,6 @@
 <p>register</p>
-<form action="#" method="post">
+<form action="{{ route('auth.register') }}" method="post">
+    @csrf
     <input type="text" name="name" id="" placeholder="nom">
     <input type="email" name="email" id="" placeholder="email">
     <input type="password" name="password" id="" placeholder="password">
