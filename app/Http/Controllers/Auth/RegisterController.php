@@ -21,7 +21,8 @@
             $data = [
                 'name' => $registerRequest->name,
                 'email' => $registerRequest->email,
-                'password' => $registerRequest->password
+                'password' => $registerRequest->password,
+                'role' => "User"
             ];
 
             $newUser = $registerServices->create($data);
