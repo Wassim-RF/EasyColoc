@@ -22,6 +22,12 @@
             Auth::login($user);
             $loginRequest->session()->regenerate();
 
-            return redirect('/home')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
+            if ($user->role === 'Admin') {
+                return redirect('admin/dashboard')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
+            } else if ($user->role === 'User') {
+                return redirect('/home')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
+            } else {
+                return redirect()->back();
+            }
         }
     }
