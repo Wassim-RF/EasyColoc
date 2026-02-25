@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\InAColocation;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -26,7 +27,13 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::get('home' , [UserController::class , 'userDashboard'])->name('view.user.home');
     Route::post('createColocation' , [ColocationsController::class , 'store'])->name('colocation.creation');
     Route::post('InviteToColocation' , [MailController::class , 'inviteToColocation'])->name('colocation.invite');
-    Route::get('/invitation/{token}' , function() {
-        return view('user.colocation.invite');
-    })->name('colocation.invitation');
 });
+
+Route::get('/invitation/{token}' , function($token) {
+    if (!Auth::check()) {
+        session(['invite_token' => $token]);
+
+        return redirect()->route('view.auth.login');  
+    }
+    return view('user.colocation.invite');
+})->name('colocation.invitation');

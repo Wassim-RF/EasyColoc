@@ -30,6 +30,17 @@
             Auth::login($newUser);
             $registerRequest->session()->regenerate();
 
+            if (session()->has('invite_token')) {
+
+                $token = session('invite_token');
+
+                session()->forget('invite_token');
+
+                return redirect()->route('colocation.invitation', [
+                    'token' => $token
+                ]);
+            }
+
             return redirect()->intended('home')->with('success' , "Votre compte a été créé avec succès.");
         }
     }

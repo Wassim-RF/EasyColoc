@@ -22,6 +22,17 @@
             Auth::login($user);
             $loginRequest->session()->regenerate();
 
+            if (session()->has('invite_token')) {
+
+                $token = session('invite_token');
+
+                session()->forget('invite_token');
+
+                return redirect()->route('colocation.invitation', [
+                    'token' => $token
+                ]);
+            }
+
             if ($user->role === 'Admin') {
                 return redirect('admin/dashboard')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
             } else if ($user->role === 'User') {
