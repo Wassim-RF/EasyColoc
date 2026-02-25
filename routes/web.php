@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ColocationsController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\InAColocation;
@@ -24,5 +25,5 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('logout' , [LogoutController::class , 'logout'])->name('auth.logout');
     Route::get('home' , [UserController::class , 'userDashboard'])->name('view.user.home');
     Route::post('createColocation' , [ColocationsController::class , 'store'])->name('colocation.creation');
-    Route::post('InviteToColocation' , [ColocationsController::class , 'inviteToColocation'])->name('colocation.invite');
+    Route::post('InviteToColocation' , [MailController::class , 'inviteToColocation'])->name('colocation.invite');
 });

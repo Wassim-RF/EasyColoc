@@ -1,6 +1,6 @@
 Bonjour,
 
-{{-- {{ auth()->user()->name }} vous invite à rejoindre la colocation {{ $colocation->name }}.
+{{ auth()->user()->name }} vous invite à rejoindre la colocation {{ $colocation->name }}.
 
 🔐 Code d’invitation : {{ $token }}
 
@@ -13,4 +13,4 @@ Cliquez sur le lien ci-dessous pour accepter l'invitation :
 Ce code est personnel et peut expirer après un certain délai.
 
 À très bientôt,
-L’équipe EasyColoc --}}
+L’équipe EasyColoc

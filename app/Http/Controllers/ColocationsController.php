@@ -23,9 +23,4 @@ class ColocationsController extends Controller
 
         return redirect()->back()->with('succes' , 'creation du colocation en success');
     }
-
-    public function inviteToColocation(Request $request) {
-        Mail::to($request->userInvitedEmail)->send(new InviteMail());
-        return redirect()->back();
-    }
 }
