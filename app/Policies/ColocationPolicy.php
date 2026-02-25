@@ -38,7 +38,7 @@ class ColocationPolicy
      */
     public function update(User $user, Colocations $colocations): bool
     {
-        return false;
+        return !Membership::where('member_id' , $user->id)->where('isOwner' , true)->exists();
     }
 
     /**
