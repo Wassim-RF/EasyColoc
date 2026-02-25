@@ -8,6 +8,7 @@ class Colocations extends Model
 {
     protected $fillable = [
         'name',
+        'colocationToken',
         'status'
     ];
 

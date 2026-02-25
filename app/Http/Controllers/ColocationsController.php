@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ColocationRequest;
 use App\Services\ColocationsServices;
 use Illuminate\Http\Request;
+use Str;
 
 class ColocationsController extends Controller
 {
     public function store(ColocationsServices $colocationsServices , ColocationRequest $colocationRequest) {
         $data = [
-            'name' => $colocationRequest->name
+            'name' => $colocationRequest->name,
+            'colocationToken' => strtoupper(Str::random(6))
         ];
 
         $colocationsServices->creation($data);
