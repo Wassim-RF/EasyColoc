@@ -11,7 +11,7 @@ use Str;
 class ColocationsController extends Controller
 {
     public function store(ColocationsServices $colocationsServices , ColocationRequest $colocationRequest) {
-        // $this->authorize('create' , Colocations::class);
+        $this->authorize('create' , Colocations::class);
         $data = [
             'name' => $colocationRequest->name,
             'colocationToken' => strtoupper(Str::random(6))
