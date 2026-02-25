@@ -14,6 +14,8 @@ class Membership extends Model
         'left_at'
     ];
 
+    public $timestamps = false;
+
     public function user() {
         return $this->belongsTo(User::class , 'member_id');
     }
