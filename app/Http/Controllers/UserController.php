@@ -5,4 +5,8 @@
         public function index() {
             return view('welcome');
         }
+
+        public function userDashboard() {
+            return view('user.addColocation');
+        }
     }

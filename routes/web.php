@@ -13,3 +13,5 @@ Route::get('login' , [LoginController::class , 'index'])->name('view.auth.login'
 Route::get('register' , [RegisterController::class , 'index'])->name('view.auth.register');
 Route::post('login' , [LoginController::class , 'login'])->name('auth.login');
 Route::post('register' , [RegisterController::class , 'register'])->name('auth.register');
+
+Route::get('home' , [UserController::class , 'userDashboard']);
