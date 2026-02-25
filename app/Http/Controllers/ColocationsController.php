@@ -26,5 +26,6 @@ class ColocationsController extends Controller
 
     public function inviteToColocation(Request $request) {
         Mail::to($request->userInvitedEmail)->send(new InviteMail());
+        return redirect()->back();
     }
 }

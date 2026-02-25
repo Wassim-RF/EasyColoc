@@ -24,4 +24,5 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('logout' , [LogoutController::class , 'logout'])->name('auth.logout');
     Route::get('home' , [UserController::class , 'userDashboard'])->name('view.user.home');
     Route::post('createColocation' , [ColocationsController::class , 'store'])->name('colocation.creation');
+    Route::post('InviteToColocation' , [ColocationsController::class , 'inviteToColocation'])->name('colocation.invite');
 });
