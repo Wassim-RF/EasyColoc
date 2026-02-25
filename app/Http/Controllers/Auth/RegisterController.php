@@ -30,6 +30,6 @@
             Auth::login($newUser);
             $registerRequest->session()->regenerate();
 
-            return redirect('/home')->with('success' , "Votre compte a été créé avec succès.");
+            return redirect()->intended('home')->with('success' , "Votre compte a été créé avec succès.");
         }
     }

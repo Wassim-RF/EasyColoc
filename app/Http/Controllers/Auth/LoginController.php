@@ -25,7 +25,7 @@
             if ($user->role === 'Admin') {
                 return redirect('admin/dashboard')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
             } else if ($user->role === 'User') {
-                return redirect('/home')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
+                return redirect()->intended('home')->with('success' , "Bienvenue ! Vous êtes maintenant connecté.");
             } else {
                 return redirect()->back();
             }
