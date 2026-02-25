@@ -2,3 +2,9 @@
     @csrf
     <button type="submit">Logout</button>
 </form>
+
+<form action="#">
+    @csrf
+    <input type="email" placeholder="email">
+    <button type="submit">Invite</button>
+</form>

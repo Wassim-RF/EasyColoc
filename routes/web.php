@@ -19,7 +19,7 @@ Route::post('login' , [LoginController::class , 'login'])->name('auth.login');
 Route::post('register' , [RegisterController::class , 'register'])->name('auth.register');
 
 
-
+// Is Login
 Route::middleware(Authenticate::class)->group(function() {
     Route::post('logout' , [LogoutController::class , 'logout'])->name('auth.logout');
     Route::get('home' , [UserController::class , 'userDashboard'])->name('view.user.home');
