@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ColocationsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\InAColocation;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\LoginController;
@@ -21,6 +22,6 @@ Route::post('register' , [RegisterController::class , 'register'])->name('auth.r
 
 Route::middleware(Authenticate::class)->group(function() {
     Route::post('logout' , [LogoutController::class , 'logout'])->name('auth.logout');
-    Route::get('home' , [UserController::class , 'userDashboard']);
+    Route::get('home' , [UserController::class , 'userDashboard'])->name('view.user.home');
     Route::post('createColocation' , [ColocationsController::class , 'store'])->name('colocation.creation');
 });
