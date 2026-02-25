@@ -5,6 +5,6 @@
 
 <form action="#">
     @csrf
-    <input type="email" placeholder="email">
+    <input type="email" name="userInvitedEmail" placeholder="email">
     <button type="submit">Invite</button>
 </form>

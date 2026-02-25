@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ColocationRequest;
+use App\Mail\InviteMail;
 use App\Models\Colocations;
 use App\Services\ColocationsServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Str;
 
 class ColocationsController extends Controller
@@ -20,5 +22,9 @@ class ColocationsController extends Controller
         $colocationsServices->creation($data);
 
         return redirect()->back()->with('succes' , 'creation du colocation en success');
+    }
+
+    public function inviteToColocation(Request $request) {
+        Mail::to($request->userInvitedEmail)->send(new InviteMail());
     }
 }
