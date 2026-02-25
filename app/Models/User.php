@@ -46,4 +46,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function memberships() {
+        return $this->hasMany(Membership::class , 'member_id');
+    }
+
+    public function colocations() {
+        return $this->belongsToMany(
+            Colocations::class,
+            'Membership',
+            'member_id',
+            'colocation_id'
+        )->withPivot(
+            'isOwner' , 
+            'joined_at' , 
+            'left_at'
+        );
+    }
 }
