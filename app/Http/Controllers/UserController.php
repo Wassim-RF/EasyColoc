@@ -1,6 +1,7 @@
 <?php
     namespace App\Http\Controllers;
 
+    use App\Models\Colocations;
     use App\Models\Membership;
 
     class UserController extends Controller {
@@ -12,7 +13,9 @@
             if (!Membership::where('member_id' , auth()->id())->exists()) {
                 return view('user.addColocation');
             } else {
-                return view('user.colocation.home');
+                $membership = Membership::where('member_id' , auth()->user()->id)->first();
+                $colocation = Colocations::find($membership->colocation_id);
+                return view('user.colocation.home' , compact('colocation'));
             }
         }
     }

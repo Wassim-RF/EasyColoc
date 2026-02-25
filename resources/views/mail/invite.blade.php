@@ -1,16 +1,14 @@
-Bonjour,
+Bonjour, <br/><br/>
 
-{{ auth()->user()->name }} vous invite à rejoindre la colocation {{ $colocation->name }}.
+{{ ucfirst(auth()->user()->name) }} vous invite à rejoindre la colocation {{ $colocation->name }} .<br/><br/>
 
-🔐 Code d’invitation : {{ $token }}
+Rejoignez-nous dès maintenant pour gérer les dépenses et la vie en colocation facilement.<br/><br/>
 
-Rejoignez-nous dès maintenant pour gérer les dépenses et la vie en colocation facilement.
+Cliquez sur le lien ci-dessous pour accepter l'invitation :<br/><br/>
 
-Cliquez sur le lien ci-dessous pour accepter l'invitation :
+{{ $link }}<br/><br/>
 
-{{ $invitationLink }}?token={{ $token }}
+Ce code est personnel et peut expirer après un certain délai.<br/><br/>
 
-Ce code est personnel et peut expirer après un certain délai.
-
-À très bientôt,
+À très bientôt,<br/>
 L’équipe EasyColoc

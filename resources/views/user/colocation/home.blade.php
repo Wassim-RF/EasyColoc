@@ -5,6 +5,7 @@
 
 <form action="{{ route('colocation.invite') }}" method="post">
     @csrf
+    <input type="hidden" name="colocationId" value="{{ $colocation->id }}">
     <input type="email" name="userInvitedEmail" placeholder="email">
     <button type="submit">Invite</button>
 </form>

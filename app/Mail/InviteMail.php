@@ -16,9 +16,11 @@ class InviteMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $colocation;
+
+    public function __construct($colocation)
     {
-        //
+        $this->colocation = $colocation;
     }
 
     /**
