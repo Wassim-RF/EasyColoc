@@ -13,4 +13,8 @@ class Invitation extends Model
         'used_at',
         'expires_at'
     ];
+
+    public function colocation() {
+        return $this->belongsTo(Colocations::class , 'colocation_id');
+    }
 }

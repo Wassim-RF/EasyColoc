@@ -28,4 +28,8 @@ class Colocations extends Model
             'left_at'
         );
     }
+
+    public function invitations() {
+        return $this->hasMany(Invitation::class , 'colocation_id');
+    }
 }
