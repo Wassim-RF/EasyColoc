@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitation;
+use App\Models\Membership;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use URL;
@@ -9,14 +12,44 @@ use URL;
 class InvitationController extends Controller
 {
     public function index($token , Request $request) {
+        $invitation = Invitation::where('token' , $token)->first();
+        $targetedUser = User::where('email' , $invitation->email)->first();
+
         if (!Auth::check()) {
             session(['invite_token' => $token]);
 
-            return redirect()->route('view.auth.login');  
+            if (!$targetedUser) {
+                return redirect()->route('view.auth.register');
+            }
+
+            return redirect()->route('view.auth.login');
         }
 
+        $isMember = Membership::where('member_id' , $targetedUser->id)->exists();
+
+        // URL Has a Correct Signature 
         if (!URL::hasValidSignature($request)) {
-            return redirect('/');
+            return redirect('home');
+        }
+
+        // Invitation link is expired
+        if ($invitation->expires_at->isPast()) {
+            return redirect('home');
+        }
+
+        // Invitition link is used
+        if ($invitation->isUsed) {
+            return redirect('home');
+        }
+
+        // Targeted user is the same
+        if (auth()->user()->email !== $invitation->email) {
+            return redirect('home');
+        }
+
+        // Targeted user is a member in another Colocation
+        if ($isMember) {
+            return redirect('home');
         }
 
         return view('user.colocation.invite');

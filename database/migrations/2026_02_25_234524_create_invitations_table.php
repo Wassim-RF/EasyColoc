@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('reponse' , ['accept' , 'refuse' , 'inWaiting'])->default('inWaiting');
             $table->string('email');
             $table->string('token')->unique();
+            $table->boolean('isUsed')->default(false);
             $table->dateTime('used_at')->nullable();
             $table->dateTime('expires_at');
             $table->timestamps();
