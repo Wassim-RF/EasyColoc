@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ColocationsController;
+use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticate;
-use App\Http\Middleware\InAColocation;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -29,11 +29,5 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('InviteToColocation' , [MailController::class , 'inviteToColocation'])->name('colocation.invite');
 });
 
-Route::get('/invitation/{token}' , function($token) {
-    if (!Auth::check()) {
-        session(['invite_token' => $token]);
-
-        return redirect()->route('view.auth.login');  
-    }
-    return view('user.colocation.invite');
-})->name('colocation.invitation');
+// Inviation
+Route::get('/invitation/{token}' , [InvitationController::class , 'index'])->name('colocation.invitation');
