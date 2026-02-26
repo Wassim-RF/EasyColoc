@@ -14,7 +14,7 @@ class MailController extends Controller
         $colocation = Colocations::find($request->colocationId);
         $link = URL::temporarySignedRoute(
             'colocation.invitation',
-            now()->addDay(2),
+            now()->addDay(1),
             ['token' => $colocation->token]
         );
         // dd($colocation);
