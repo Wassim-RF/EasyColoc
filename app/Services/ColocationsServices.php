@@ -15,15 +15,4 @@
             ]);
             return $colocation;
         }
-
-        // public function creerToken() {
-        //     $caracters = 'ABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789';
-        //     $code = '';
-
-        //     for ($i = 0 ; $i < 5 ; $i++) {
-        //         $code .= $caracters[rand(0 , strlen($caracters) - 1)];
-        //     }
-
-        //     return $code;
-        // }
     }

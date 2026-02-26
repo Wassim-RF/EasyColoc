@@ -12,7 +12,8 @@ class Invitation extends Model
         'email',
         'token',
         'used_at',
-        'expires_at'
+        'expires_at',
+        'isUsed'
     ];
 
     protected $casts = [

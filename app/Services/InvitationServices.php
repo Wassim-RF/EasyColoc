@@ -2,6 +2,7 @@
     namespace App\Services;
 
     use App\Models\Invitation;
+    use DateTime;
     use URL;
 
     class InvitationServices {
@@ -19,6 +20,14 @@
                 'email' => $invitedEmail,
                 'token' => $token,
                 'expires_at' => now()->addDay()
+            ]);
+        }
+
+        public function acceptUpdateInvitation($id) {
+            return Invitation::find($id)->update([
+                'reponse' => 'accept',
+                'used_at' => new DateTime('now'),
+                'isUsed' => true
             ]);
         }
     }

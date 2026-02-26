@@ -6,6 +6,8 @@ use App\Models\Colocations;
 use App\Models\Invitation;
 use App\Models\Membership;
 use App\Models\User;
+use App\Services\InvitationServices;
+use App\Services\MembershipServices;
 use Auth;
 use Illuminate\Http\Request;
 use URL;
@@ -55,6 +57,12 @@ class InvitationController extends Controller
 
         $colocation = Colocations::find($invitation->colocation_id);
 
-        return view('user.colocation.invite' , compact('colocation'));
+        return view('user.colocation.invite' , compact('colocation' , 'invitation'));
+    }
+
+    public function acceptInvitation($token , Request $request , InvitationServices $invitationServices , MembershipServices $membershipServices) {
+        $invitationServices->acceptUpdateInvitation($request->invitationID);
+        $membershipServices->acceptInvitation($request->colocationID);
+        return redirect('home');
     }
 }
