@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Colocations;
 use App\Models\Invitation;
 use App\Models\Membership;
 use App\Models\User;
@@ -52,6 +53,8 @@ class InvitationController extends Controller
             return redirect('home');
         }
 
-        return view('user.colocation.invite');
+        $colocation = Colocations::find($invitation->colocation_id);
+
+        return view('user.colocation.invite' , compact('colocation'));
     }
 }
