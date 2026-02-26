@@ -6,10 +6,9 @@
     use URL;
 
     class InvitationServices {
-        public function generateLink($colocation , $token) {
-            return URL::temporarySignedRoute(
+        public function generateLink($token) {
+            return URL::route(
                 'colocation.invitation',
-                now()->addDay(),
                 ['token' => $token]
             );
         }

@@ -30,11 +30,6 @@ class InvitationController extends Controller
 
         $isMember = Membership::where('member_id' , $targetedUser->id)->exists();
 
-        // URL Has a Correct Signature 
-        if (!URL::hasValidSignature($request)) {
-            return redirect('home');
-        }
-
         // Invitation link is expired
         if ($invitation->expires_at->isPast()) {
             return redirect('home');
