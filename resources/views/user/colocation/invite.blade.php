@@ -6,6 +6,7 @@
     <button type="submit">Accept</button>
 </form>
 <form action="{{ route('invitation.refuse') }}" method="post">
+    @csrf
     <input type="hidden" name="invitationID" value="{{ $invitation->id }}">
     <button type="submit">Refuse</button>
 </form>

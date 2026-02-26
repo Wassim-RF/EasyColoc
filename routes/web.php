@@ -28,6 +28,7 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('createColocation' , [ColocationsController::class , 'store'])->name('colocation.creation');
     Route::post('InviteToColocation' , [MailController::class , 'inviteToColocation'])->name('colocation.invite');
     Route::post('invitation/accept' , [InvitationController::class , 'acceptInvitation'])->name('invitation.accept');
+    Route::post('invitation/refuse' , [InvitationController::class , 'refuseInvitation'])->name('invitation.refuse');
 });
 
 // Inviation
