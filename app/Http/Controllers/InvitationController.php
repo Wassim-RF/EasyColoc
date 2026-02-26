@@ -60,7 +60,7 @@ class InvitationController extends Controller
         return view('user.colocation.invite' , compact('colocation' , 'invitation'));
     }
 
-    public function acceptInvitation($token , Request $request , InvitationServices $invitationServices , MembershipServices $membershipServices) {
+    public function acceptInvitation(Request $request , InvitationServices $invitationServices , MembershipServices $membershipServices) {
         $invitationServices->acceptUpdateInvitation($request->invitationID);
         $membershipServices->acceptInvitation($request->colocationID);
         return redirect('home');

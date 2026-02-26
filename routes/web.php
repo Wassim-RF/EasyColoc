@@ -27,7 +27,8 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::get('home' , [UserController::class , 'userDashboard'])->name('view.user.home');
     Route::post('createColocation' , [ColocationsController::class , 'store'])->name('colocation.creation');
     Route::post('InviteToColocation' , [MailController::class , 'inviteToColocation'])->name('colocation.invite');
+    Route::post('invitation/accept' , [InvitationController::class , 'acceptInvitation'])->name('invitation.accept');
 });
 
 // Inviation
-Route::get('/invitation/{token}' , [InvitationController::class , 'index'])->name('colocation.invitation');
+Route::get('invitation/{token}' , [InvitationController::class , 'index'])->name('colocation.invitation');
