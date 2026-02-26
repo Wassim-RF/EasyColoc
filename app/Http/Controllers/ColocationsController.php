@@ -15,8 +15,7 @@ class ColocationsController extends Controller
     public function store(ColocationsServices $colocationsServices , ColocationRequest $colocationRequest) {
         $this->authorize('create' , Colocations::class);
         $data = [
-            'name' => $colocationRequest->name,
-            'token' => strtoupper(Str::random(6))
+            'name' => $colocationRequest->name
         ];
 
         $colocationsServices->creation($data);

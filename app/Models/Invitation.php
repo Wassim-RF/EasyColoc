@@ -10,6 +10,7 @@ class Invitation extends Model
         'colocation_id',
         'reponse',
         'email',
+        'token',
         'used_at',
         'expires_at'
     ];

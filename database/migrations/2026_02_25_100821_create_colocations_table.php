@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('status' , ['active' , 'desactive'])->default('active');
-            $table->string('token')->unique();
             $table->timestamps();
         });
     }
