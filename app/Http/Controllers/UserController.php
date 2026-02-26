@@ -15,7 +15,8 @@
             } else {
                 $membership = Membership::where('member_id' , auth()->user()->id)->first();
                 $colocation = Colocations::find($membership->colocation_id);
-                return view('user.colocation.home' , compact('colocation'));
+                $isOwner= $membership->isOwner;
+                return view('user.colocation.home' , compact('colocation' , 'isOwner'));
             }
         }
     }
