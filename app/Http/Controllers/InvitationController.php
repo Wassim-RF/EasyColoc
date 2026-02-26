@@ -65,4 +65,9 @@ class InvitationController extends Controller
         $membershipServices->acceptInvitation($request->colocationID);
         return redirect('home');
     }
+
+    public function refuseInvitation(Request $request , InvitationServices $invitationServices) {
+        $invitationServices->refuseUpdateInvitation($request->invitationID);
+        return redirect('home');
+    }
 }

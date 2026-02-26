@@ -5,6 +5,7 @@
     <input type="hidden" name="colocationID" value="{{ $colocation->id }}">
     <button type="submit">Accept</button>
 </form>
-<form action="#" method="post">
+<form action="{{ route('invitation.refuse') }}" method="post">
+    <input type="hidden" name="invitationID" value="{{ $invitation->id }}">
     <button type="submit">Refuse</button>
 </form>

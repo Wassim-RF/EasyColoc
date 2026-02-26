@@ -25,6 +25,13 @@
 
         public function acceptUpdateInvitation($id) {
             return Invitation::find($id)->update([
+                'reponse' => 'refuse',
+                'used_at' => new DateTime('now'),
+                'isUsed' => true
+            ]);
+        }
+        public function refuseUpdateInvitation($id) {
+            return Invitation::find($id)->update([
                 'reponse' => 'accept',
                 'used_at' => new DateTime('now'),
                 'isUsed' => true
