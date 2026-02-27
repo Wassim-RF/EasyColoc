@@ -13,9 +13,10 @@
 @endif
 
 <form action="#" method="post">
+    <input type="hidden" name="colocation_id" value="{{ $colocation->id }}">
     <input type="text" name="title" placeholder="title">
     <input type="number" name="amount" placeholder="amount">
-    <select name="category">
+    <select name="category_id">
         @foreach ($categories as $categorie)
             <option value="{{ $categorie->id }}">{{ ucfirst($categorie->name) }}</option>
         @endforeach
