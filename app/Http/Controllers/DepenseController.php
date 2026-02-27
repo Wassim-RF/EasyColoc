@@ -8,14 +8,16 @@ use App\Models\Membership;
 use App\Services\CategoryServices;
 use App\Services\ColocationsServices;
 use App\Services\DepenseServices;
+use App\Services\MembershipServices;
 use App\Services\PayementServices;
 use Illuminate\Http\Request;
 
 class DepenseController extends Controller
 {
 
-    public function store(Request $request , DepenseServices $depenseServices , ColocationsServices $colocationsServices , PayementServices $payementServices) {
+    public function store(Request $request , DepenseServices $depenseServices , ColocationsServices $colocationsServices , PayementServices $payementServices , MembershipServices $membershipServices) {
         $members = $colocationsServices->getAllMemberInColocation($request->colocation_id);
+        $loginMember = $membershipServices->loginMember();
         $data = [
             'title' => $request->title,
             'amount' => $request->amount,
@@ -31,7 +33,7 @@ class DepenseController extends Controller
         $payementData = [];
 
         foreach($members as $member) {
-            if($member->id != auth()->id()) {
+            if($member->id != $loginMember->id) {
                 $payementData[] = [
                     'amount' => $request->amount / $memberNum,
                     'depense_id' => $depense->id,
@@ -40,7 +42,9 @@ class DepenseController extends Controller
             }
         }
 
-        $payementServices->creation($payementData);
+        if(!empty($payementData)) {
+            $payementServices->creation($payementData);
+        }
 
         return redirect()->back();
     }

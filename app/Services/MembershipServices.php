@@ -11,4 +11,8 @@
                 'isOwner' => false
             ]);
         }
+
+        public function loginMember() {
+            return Membership::where('member_id' , auth()->id())->first();
+        }
     }

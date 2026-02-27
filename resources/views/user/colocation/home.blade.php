@@ -25,11 +25,12 @@
     </select>
     <button type="submit">Ajoute</button>
 </form>
-
-<form action="{{ route('colocation.desactive') }}" method="post">
-    @csrf
-    <input type="hidden" name="colocation_id" value="{{ $colocation->id }}">
-    <button type="submit">Desctive</button>
-</form>
+@if ($isOwner)
+    <form action="{{ route('colocation.desactive') }}" method="post">
+        @csrf
+        <input type="hidden" name="colocation_id" value="{{ $colocation->id }}">
+        <button type="submit">Desctive</button>
+    </form>
+@endif
 
 <a href="{{ route('view.user.payements') }}">Voir Payements</a>
