@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ColocationRequest;
 use App\Mail\InviteMail;
 use App\Models\Colocations;
+use App\Services\CategoryServices;
 use App\Services\ColocationsServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
