@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ColocationsController;
+use App\Http\Controllers\DepenseController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
@@ -29,6 +30,7 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('InviteToColocation' , [MailController::class , 'inviteToColocation'])->name('colocation.invite');
     Route::post('invitation/accept' , [InvitationController::class , 'acceptInvitation'])->name('invitation.accept');
     Route::post('invitation/refuse' , [InvitationController::class , 'refuseInvitation'])->name('invitation.refuse');
+    Route::post('addDepense' , [DepenseController::class , 'store'])->name('colocation.depense.creation');
 });
 
 // Inviation

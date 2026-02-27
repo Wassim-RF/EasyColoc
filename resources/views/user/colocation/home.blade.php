@@ -12,7 +12,7 @@
     </form>
 @endif
 
-<form action="#" method="post">
+<form action="{{ route('colocation.depense.creation') }}" method="post">
     <input type="hidden" name="colocation_id" value="{{ $colocation->id }}">
     <input type="text" name="title" placeholder="title">
     <input type="number" name="amount" placeholder="amount">
