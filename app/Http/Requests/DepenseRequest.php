@@ -22,11 +22,7 @@ class DepenseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'         => 'required|string|max:255',
-            'colocation_id' => 'required|exists:colocations,id',
-            'amount'        => 'required|numeric|min:0',
-            'payeur_id'     => 'required|exists:users,id',
-            'category_id'   => 'required|exists:categories,id',
+            //
         ];
     }
 }

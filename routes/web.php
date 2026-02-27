@@ -26,7 +26,6 @@ Route::post('register' , [RegisterController::class , 'register'])->name('auth.r
 Route::middleware(Authenticate::class)->group(function() {
     Route::post('logout' , [LogoutController::class , 'logout'])->name('auth.logout');
     Route::get('home' , [UserController::class , 'userDashboard'])->name('view.user.home');
-    Route::get('createDepense' , [DepenseController::class , 'index'])->name('view.user.createDepense');
     Route::post('createColocation' , [ColocationsController::class , 'store'])->name('colocation.creation');
     Route::post('InviteToColocation' , [MailController::class , 'inviteToColocation'])->name('colocation.invite');
     Route::post('invitation/accept' , [InvitationController::class , 'acceptInvitation'])->name('invitation.accept');
