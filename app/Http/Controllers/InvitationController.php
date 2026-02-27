@@ -56,9 +56,14 @@ class InvitationController extends Controller
     }
 
     public function acceptInvitation(Request $request , InvitationServices $invitationServices , MembershipServices $membershipServices) {
-        $invitationServices->acceptUpdateInvitation($request->invitationID);
-        $membershipServices->acceptInvitation($request->colocationID);
-        return redirect('home');
+        $user = Auth::user();
+        $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
+        if (!$hasActiveColocation) {
+            $invitationServices->acceptUpdateInvitation($request->invitationID);
+            $membershipServices->acceptInvitation($request->colocationID);
+            return redirect('home');
+        }
+        return redirect('home')->with('error' , 'Vous avez already dans une colocation');
     }
 
     public function refuseInvitation(Request $request , InvitationServices $invitationServices) {
