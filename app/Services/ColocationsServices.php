@@ -20,8 +20,9 @@
             return Membership::where('colocation_id' , $colocation_id)->get();
         }
 
-        public function desactiveColocarion($id) {
-            return Colocations::find($id)->update([
+        public function desactiveColocation(int $id) {
+            $colocation = Colocations::find($id);
+            return $colocation->update([
                 'isActive' => false
             ]);
         }

@@ -8,7 +8,8 @@ class Colocations extends Model
 {
     protected $fillable = [
         'name',
-        'status'
+        'status',
+        'isActive'
     ];
 
     public function members() {

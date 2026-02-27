@@ -25,7 +25,7 @@ class ColocationsController extends Controller
     }
 
     public function desactiveColocation(Request $request , ColocationsServices $colocationsServices) {
-        $colocationsServices->desactiveColocarion($request->colocation_id);
+        $colocationsServices->desactiveColocation((int) $request->colocation_id);
         return redirect('home');
     }
 }
