@@ -15,4 +15,8 @@
             ]);
             return $colocation;
         }
+
+        public function memberInColocation($colocation_id) {
+            return Membership::where('colocation_id' , $colocation_id)->count();
+        }
     }
