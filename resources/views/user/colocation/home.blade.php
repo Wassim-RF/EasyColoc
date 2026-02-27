@@ -26,7 +26,7 @@
     <button type="submit">Ajoute</button>
 </form>
 
-<form action="" method="post">
+<form action="{{ route('colocation.desactive') }}" method="post">
     @csrf
     <input type="hidden" name="colocation_id" value="{{ $colocation->id }}">
     <button type="submit">Desctive</button>

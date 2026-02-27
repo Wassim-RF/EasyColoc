@@ -34,6 +34,7 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('invitation/refuse' , [InvitationController::class , 'refuseInvitation'])->name('invitation.refuse');
     Route::post('addDepense' , [DepenseController::class , 'store'])->name('depense.creation');
     Route::post('payement/toogleAsPayed' , [PaymentController::class , 'toogleAsPayed'])->name('payement.tooglePayed');
+    Route::post('colocation/desactive' , [ColocationsController::class , 'desactiveColocation'])->name('colocation.desactive');
 });
 
 // Inviation
