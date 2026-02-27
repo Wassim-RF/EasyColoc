@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Depense extends Model
 {
@@ -24,5 +25,9 @@ class Depense extends Model
 
     public function category() {
         return $this->belongsTo(Category::class , 'category_id');
+    }
+
+    public function payments() {
+        return $this->HasMany(Payment::class , 'depense_id');
     }
 }

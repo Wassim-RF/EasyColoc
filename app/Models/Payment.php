@@ -17,4 +17,12 @@ class Payment extends Model
     protected $casts = [
         'payed_at' => 'datetime'
     ];
+
+    public function depense() {
+        return $this->belongsTo(Depense::class , 'depense_id');
+    }
+
+    public function receiveir() {
+        return $this->belongsTo(User::class , 'receiver_id');
+    }
 }
