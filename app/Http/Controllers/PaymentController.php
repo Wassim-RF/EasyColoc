@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Services\PayementServices;
+use Auth;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
     public function index(PayementServices $payementServices) {
-        $payements = $payementServices->userPayment();
+        $user = Auth::user();
+        $activeColocation = $user->colocations()->where('isActive' , true)->first();
+        $membership = $user->memberships()->where('colocation_id' , $activeColocation->id)->first();
+        $payements = $payementServices->userPayment($membership->id);
         return view('user.colocation.payements' , compact('payements'));
     }
 

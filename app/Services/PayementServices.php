@@ -9,8 +9,8 @@
             return Payment::insert($data);
         }
 
-        public function userPayment() {
-            return Payment::where('receiver_id' , auth()->user()->id)->get();
+        public function userPayment($id) {
+            return Payment::where('receiver_id' , $id)->get();
         }
 
         public function toggleAsPayed($id) {

@@ -30,7 +30,7 @@ class ColocationPolicy
      */
     public function create(User $user): bool
     {
-        return !Membership::where('member_id' , $user->id)->exists();
+        return !$user->colocations()->where('isActive' , true)->exists();
     }
 
     /**
