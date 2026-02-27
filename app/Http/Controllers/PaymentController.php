@@ -11,4 +11,9 @@ class PaymentController extends Controller
         $payements = $payementServices->userPayment();
         return view('user.colocation.payements' , compact('payements'));
     }
+
+    public function toogleAsPayed(Request $request , PayementServices $payementServices) {
+        $payementServices->toggleAsPayed($request->payement_id);
+        return redirect()->back();
+    }
 }
