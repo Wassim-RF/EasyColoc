@@ -33,6 +33,7 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('invitation/accept' , [InvitationController::class , 'acceptInvitation'])->name('invitation.accept');
     Route::post('invitation/refuse' , [InvitationController::class , 'refuseInvitation'])->name('invitation.refuse');
     Route::post('addDepense' , [DepenseController::class , 'store'])->name('depense.creation');
+    Route::post('payement/toogleAsPayed' , [PaymentController::class , 'toogleAsPayed'])->name('payement.tooglePayed');
 });
 
 // Inviation
