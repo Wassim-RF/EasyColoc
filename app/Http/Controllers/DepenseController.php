@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DepenseRequest;
+use App\Models\Colocations;
+use App\Models\Membership;
+use App\Services\CategoryServices;
 use App\Services\DepenseServices;
-use Illuminate\Http\Request;
 
 class DepenseController extends Controller
 {
+    public function index(CategoryServices $categoryServices) {
+        $categories = $categoryServices->getAllCategory();
+        $membership = Membership::where('member_id' , auth()->user()->id)->first();
+        $colocation = Colocations::find($membership->colocation_id);
+        return view('user.colocation.depense.creation' , compact('categories' , 'colocation'));
+    }
     public function store(DepenseRequest $depenseRequest , DepenseServices $depenseServices) {
         $data = [
             'title' => $depenseRequest->title,
@@ -16,6 +24,8 @@ class DepenseController extends Controller
             'payeur_id' => auth()->user()->id,
             'colocation_id' => $depenseRequest->colocation_id
         ];
+
+        dd($data);
 
         $depenseServices->creation($data);
 
