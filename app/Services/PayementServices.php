@@ -10,7 +10,7 @@
         }
 
         public function userPayment($id) {
-            return Payment::where('receiver_id' , $id)->get();
+            return Payment::where('receiver_id' , $id)->where('isPayed' , false)->get();
         }
 
         public function toggleAsPayed($id) {
