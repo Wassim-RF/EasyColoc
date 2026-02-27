@@ -19,4 +19,10 @@
         public function getAllMemberInColocation($colocation_id) {
             return Membership::where('colocation_id' , $colocation_id)->get();
         }
+
+        public function desactiveColocarion($id) {
+            return Colocations::find($id)->update([
+                'isActive' => false
+            ]);
+        }
     }

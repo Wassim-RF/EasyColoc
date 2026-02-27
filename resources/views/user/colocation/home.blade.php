@@ -26,4 +26,10 @@
     <button type="submit">Ajoute</button>
 </form>
 
+<form action="" method="post">
+    @csrf
+    <input type="hidden" name="colocation_id" value="{{ $colocation->id }}">
+    <button type="submit">Desctive</button>
+</form>
+
 <a href="{{ route('view.user.payements') }}">Voir Payements</a>
