@@ -25,3 +25,5 @@
     </select>
     <button type="submit">Ajoute</button>
 </form>
+
+<a href="{{ route('view.user.payements') }}">Voir Payements</a>
