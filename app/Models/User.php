@@ -63,4 +63,8 @@ class User extends Authenticatable
             'left_at'
         );
     }
+
+    public function depenses() {
+        return $this->hasMany(Depense::class , 'payer_id');
+    }
 }

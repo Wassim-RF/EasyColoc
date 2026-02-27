@@ -13,4 +13,16 @@ class Depense extends Model
         'payeur_id',
         'category_id'
     ];
+
+    public function payer() {
+        return $this->belongsTo(User::class , 'payeur_id');
+    }
+
+    public function colocation() {
+        return $this->belongsTo(Colocations::class , 'colocation_id');
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class , 'category_id');
+    }
 }
