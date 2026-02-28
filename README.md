@@ -1,59 +1,161 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"> <img src="https://img.icons8.com/fluency/240/home.png" width="120" alt="EasyColoc Logo"> </p> <h1 align="center">🏠 EasyColoc</h1> <p align="center"> 💸 Plateforme Web Moderne de Gestion de Colocation </p> <p align="center"> <a href="#"><img src="https://img.shields.io/badge/Laravel-12-red" alt="Laravel Version"></a> <a href="#"><img src="https://img.shields.io/badge/PHP-8.3-blue" alt="PHP Version"></a> <a href="#"><img src="https://img.shields.io/badge/TailwindCSS-3.x-38B2AC" alt="Tailwind"></a> <a href="#"><img src="https://img.shields.io/badge/License-MIT-green" alt="License"></a> </p>
+🚀 À propos du projet
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+EasyColoc est une application web développée avec Laravel qui simplifie la gestion financière d’une colocation.
 
-## About Laravel
+🎯 Objectif :
+Éviter les conflits entre colocataires en automatisant les calculs et en affichant clairement :
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+💬 « Qui doit quoi à qui »
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+✨ Fonctionnalités Principales
+🔐 Authentification & Utilisateurs
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+✅ Inscription / Connexion sécurisée
 
-## Learning Laravel
+👤 Gestion du profil
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+👑 Premier utilisateur promu Admin Global
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+🚫 Bannissement / Débannissement
 
-## Laravel Sponsors
+🏠 Gestion des colocations
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+➕ Création d’une colocation (Owner automatique)
 
-### Premium Partners
+📩 Invitation via email avec token sécurisé
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+🔒 Une seule colocation active par utilisateur
 
-## Contributing
+🚪 Départ volontaire d’un membre
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+❌ Retrait d’un membre par l’Owner
 
-## Code of Conduct
+🛑 Annulation d’une colocation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+💰 Gestion des dépenses
 
-## Security Vulnerabilities
+📝 Ajout d’une dépense (titre, montant, date, catégorie, payeur)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+📊 Historique des dépenses
 
-## License
+📅 Filtrage par mois
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+📈 Statistiques par catégorie
+
+⚖️ Calcul automatique des soldes
+
+💵 Total payé par membre
+
+🧮 Part individuelle calculée automatiquement
+
+📉 Solde créditeur / débiteur
+
+🔄 Vue simplifiée : Qui doit à qui
+
+💳 Paiements simplifiés
+
+🔘 Bouton “Marquer payé”
+
+🔄 Mise à jour automatique des balances
+
+⭐ Système de réputation
+
+➕ +1 si départ sans dette
+
+➖ -1 si départ avec dette
+
+⚠️ Règle spéciale : dette transférée à l’Owner si retrait forcé
+
+👑 Dashboard Admin Global
+
+📊 Statistiques globales
+
+👥 Gestion des utilisateurs
+
+🚫 Modération (ban / unban)
+
+🏗 Architecture
+
+Le projet respecte strictement l’architecture MVC :
+
+🧠 Models → Logique métier & relations Eloquent
+
+🎮 Controllers → Gestion des requêtes
+
+🎨 Views → Blade + Tailwind CSS
+
+⚙️ Services → Calcul des balances
+
+🔐 Policies → Gestion des autorisations
+
+🛡 Sécurité
+
+🔒 Protection CSRF
+
+✅ Validation côté serveur (Form Requests)
+
+🧼 Protection contre les attaques XSS
+
+🗄 Relations avec clés étrangères
+
+👮 Gestion des rôles (Admin / Owner / Member)
+
+🛠 Stack Technique
+
+⚡ Laravel 12
+
+🐘 PHP 8.3
+
+🗄 MySQL / PostgreSQL
+
+🎨 Blade + Tailwind CSS
+
+🔑 Laravel Breeze
+
+🗂 Git & GitHub
+
+⚙️ Installation
+1️⃣ Cloner le projet
+git clone https://github.com/your-username/easycoloc.git
+cd easycoloc
+2️⃣ Installer les dépendances
+composer install
+npm install
+3️⃣ Configurer l’environnement
+cp .env.example .env
+php artisan key:generate
+
+Configurer la base de données dans le fichier .env
+
+4️⃣ Lancer les migrations
+php artisan migrate
+5️⃣ Démarrer le serveur
+php artisan serve
+👥 Rôles
+🎭 Rôle	🔑 Permissions
+Member	Ajouter dépense, voir solde, quitter colocation
+Owner	Gérer membres, catégories, annuler colocation
+Global Admin	Voir statistiques, bannir utilisateurs
+📚 Objectif Pédagogique
+
+Ce projet démontre :
+
+💡 Maîtrise de Laravel MVC
+
+🔗 Utilisation correcte d’Eloquent ORM
+
+🧱 Bonne modélisation relationnelle
+
+🛡 Sécurité web
+
+📱 Interface moderne & responsive
+
+📸 Screenshots
+
+(Ajouter ici des captures d’écran du projet)
+
+📜 Licence
+
+Projet réalisé dans un cadre pédagogique 🎓
+Licence MIT.
