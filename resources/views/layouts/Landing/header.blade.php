@@ -11,7 +11,7 @@
         <div class="flex items-center gap-8">
             
             <nav class="hidden md:flex space-x-8">
-            <a href="#" class="text-base font-medium text-slate-600 hover:text-orange-500 transition-colors duration-200">
+            <a href="#features" class="text-base font-medium text-slate-600 hover:text-orange-500 transition-colors duration-200">
                 Fonctionnalités
             </a>
             <a href="#" class="text-base font-medium text-slate-600 hover:text-orange-500 transition-colors duration-200">
