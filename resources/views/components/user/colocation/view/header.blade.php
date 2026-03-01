@@ -14,10 +14,10 @@
     </div>
 
     <div class="flex items-center gap-3">
-        <button class="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-700 font-bold text-sm hover:bg-slate-50 transition-all shadow-sm">
+        <a href="/colocation/{{ $colocation->id }}/invite" class="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-700 font-bold text-sm hover:bg-slate-50 transition-all shadow-sm">
             <i data-lucide="user-plus" class="w-4 h-4 text-orange-500"></i>
             Inviter
-        </button>
+        </a>
         <button class="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-700 font-bold text-sm hover:bg-slate-50 transition-all shadow-sm">
             <i data-lucide="settings" class="w-4 h-4 text-slate-400"></i>
             Paramètres

@@ -30,7 +30,8 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::get('addColocation' , [UserController::class , 'addColocationView'])->name('view.user.addColocation');
     Route::get('return' , [UserController::class , 'returnToHome'])->name('view.user.returnToHome');
     Route::get('payements' , [PaymentController::class , 'index'])->name('view.user.payements');
-    Route::get('colocation/{id}/addDepeses' , [DepenseController::class , 'index'])->name('view.user.payements');
+    Route::get('colocation/{id}/addDepeses' , [DepenseController::class , 'index']);
+    Route::get('colocation/{id}/invite' , [InvitationController::class , 'inviteNewMember'])->name('view.user.invite');
     Route::post('createColocation' , [ColocationsController::class , 'store'])->name('colocation.creation');
     Route::post('InviteToColocation' , [MailController::class , 'inviteToColocation'])->name('colocation.invite');
     Route::post('invitation/accept' , [InvitationController::class , 'acceptInvitation'])->name('invitation.accept');

@@ -58,4 +58,8 @@
 
             return $payments;
         }
+
+        public function findColocation($id) {
+            return Colocations::find($id);
+        }
     }

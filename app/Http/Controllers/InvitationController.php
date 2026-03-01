@@ -6,6 +6,7 @@ use App\Models\Colocations;
 use App\Models\Invitation;
 use App\Models\Membership;
 use App\Models\User;
+use App\Services\ColocationsServices;
 use App\Services\InvitationServices;
 use App\Services\MembershipServices;
 use Auth;
@@ -52,7 +53,7 @@ class InvitationController extends Controller
 
         $colocation = Colocations::find($invitation->colocation_id);
 
-        return view('user.colocation.invite' , compact('colocation' , 'invitation'));
+        return view('user.colocation.invitation' , compact('colocation' , 'invitation'));
     }
 
     public function acceptInvitation(Request $request , InvitationServices $invitationServices , MembershipServices $membershipServices) {
@@ -69,5 +70,12 @@ class InvitationController extends Controller
     public function refuseInvitation(Request $request , InvitationServices $invitationServices) {
         $invitationServices->refuseUpdateInvitation($request->invitationID);
         return redirect('home');
+    }
+
+    public function inviteNewMember($id , ColocationsServices $colocationsServices) {
+        $user = Auth::user();
+        $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
+        $colocation = $colocationsServices->findColocation($id);
+        return view('user.colocation.invite' , compact('hasActiveColocation' , 'colocation'));
     }
 }

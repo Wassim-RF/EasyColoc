@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="w-full py-5 bg-orange-500 text-white rounded-[1.5rem] font-black text-lg hover:bg-orange-600 shadow-xl shadow-orange-200 transition-all transform hover:-translate-y-1">
+            <button type="submit" class="w-full py-5 bg-orange-500 text-white rounded-3xl font-black text-lg hover:bg-orange-600 shadow-xl shadow-orange-200 transition-all transform hover:-translate-y-1">
                 AJOUTER LA DÉPENSE
             </button>
         </form>
