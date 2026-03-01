@@ -18,6 +18,8 @@ class InvitationController extends Controller
     public function index($token , Request $request) {
         $invitation = Invitation::where('token' , $token)->first();
         $targetedUser = User::where('email' , $invitation->email)->first();
+        $user = Auth::user();
+        $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
 
         if (!Auth::check()) {
             session(['invite_token' => $token]);
@@ -53,7 +55,7 @@ class InvitationController extends Controller
 
         $colocation = Colocations::find($invitation->colocation_id);
 
-        return view('user.colocation.invitation' , compact('colocation' , 'invitation'));
+        return view('user.colocation.invitation' , compact('colocation' , 'invitation' , 'hasActiveColocation'));
     }
 
     public function acceptInvitation(Request $request , InvitationServices $invitationServices , MembershipServices $membershipServices) {
