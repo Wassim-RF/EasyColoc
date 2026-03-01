@@ -15,13 +15,13 @@
             $user = Auth::user();
             $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
             if (!$hasActiveColocation) {
-                return view('user.notInColocation');
+                return view('user.notInColocation' , compact('hasActiveColocation'));
             } else {
                 $categories = $categoryServices->getAllCategory();
                 $membership = Membership::where('member_id' , $user->id)->first();
                 $colocation = Colocations::find($membership->colocation_id);
                 $isOwner= $membership->isOwner;
-                return view('user.colocation.home' , compact('colocation' , 'isOwner' , 'categories'));
+                return view('user.colocation.home' , compact('colocation' , 'isOwner' , 'categories' , 'hasActiveColocation'));
             }
         }
 
