@@ -14,10 +14,11 @@ use Str;
 
 class ColocationsController extends Controller
 {
-    public function index() {
+    public function index($id) {
         $user = Auth::user();
         $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
-        return view('user.colocation.voirColocation.home' , compact('hasActiveColocation'));
+
+        return view('user.colocation.voirColocation.home' , compact('hasActiveColocation' , 'id'));
     }
 
     public function store(ColocationsServices $colocationsServices , ColocationRequest $colocationRequest) {

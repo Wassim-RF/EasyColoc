@@ -19,6 +19,8 @@
 
             if (!Hash::check($loginRequest->password , $user->password)) return redirect()->back()->with('error' , "Le mot de passe est incorrect.");
 
+            if ($user->isBanned) return redirect()->back()->with('failed' , 'Vous avez banner');
+
             Auth::login($user);
             $loginRequest->session()->regenerate();
 
