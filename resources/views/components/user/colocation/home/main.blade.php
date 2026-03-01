@@ -4,5 +4,5 @@
         <p class="text-slate-500 text-sm font-medium mt-1">Bienvenue dans votre espace de colocation.</p>
     </div>
     @include('components.user.colocation.home.KPICart')
-    
+    @include('components.user.colocation.home.quiDoitAqui')
 </main>
