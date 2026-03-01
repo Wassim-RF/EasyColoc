@@ -18,7 +18,6 @@
             if (!$hasActiveColocation) {
                 return view('user.notInColocation' , compact('hasActiveColocation'));
             } else {
-                $categories = $categoryServices->getAllCategory();
                 $membership = Membership::where('member_id' , $user->id)->first();
                 $colocation = Colocations::find($membership->colocation_id);
                 $totalDepence = $colocationsServices->totalDepense($colocation->id);
@@ -27,7 +26,7 @@
                 $membersNum = $colocationsServices->membersNum($colocation->id);
                 $isOwner= $membership->isOwner;
                 $payements = $colocationsServices->payements($colocation->id);
-                return view('user.colocation.home' , compact('colocation' , 'isOwner' , 'categories' , 'hasActiveColocation' , 'totalDepence' , 'totalDepenceMonth' , 'members' , 'membersNum' , 'payements'));
+                return view('user.colocation.home' , compact('colocation' , 'isOwner' , 'hasActiveColocation' , 'totalDepence' , 'totalDepenceMonth' , 'members' , 'membersNum' , 'payements'));
             }
         }
 

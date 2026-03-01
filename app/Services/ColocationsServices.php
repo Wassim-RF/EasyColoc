@@ -45,7 +45,7 @@
         }
 
         public function payements($id) {
-            $colocation = Colocations::with(['depenses.payments.receiver', 'depenses.user'])->findOrFail($id);
+            $colocation = Colocations::with(['depenses.payments.receiver', 'depenses.payer'])->findOrFail($id);
 
             $payments = $colocation->depenses->flatMap(function($depense) {
                 return $depense->payments->map(function($payment) use ($depense) {

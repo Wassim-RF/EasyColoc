@@ -10,10 +10,17 @@ use App\Services\ColocationsServices;
 use App\Services\DepenseServices;
 use App\Services\MembershipServices;
 use App\Services\PayementServices;
+use Auth;
 use Illuminate\Http\Request;
 
 class DepenseController extends Controller
 {
+    public function index($id , CategoryServices $categoryServices) {
+        $categories = $categoryServices->getAllCategory();
+        $user = Auth::user();
+        $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
+        return view('user.colocation.addDepenses' , compact('hasActiveColocation' , 'id' , 'categories'));
+    }
 
     public function store(Request $request , DepenseServices $depenseServices , ColocationsServices $colocationsServices , PayementServices $payementServices , MembershipServices $membershipServices) {
         $members = $colocationsServices->getAllMemberInColocation($request->colocation_id);
