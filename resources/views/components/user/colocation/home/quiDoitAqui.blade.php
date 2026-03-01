@@ -4,10 +4,10 @@
             <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Qui doit à qui</h2>
             <p class="text-sm text-slate-500 font-medium">Récapitulatif des dettes entre colocataires</p>
         </div>
-        <button class="px-5 py-2.5 text-sm font-bold text-slate-600 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 transition-all flex items-center gap-2">
+        <a href="{{ route('view.user.payements') }}" class="px-5 py-2.5 text-sm font-bold text-slate-600 bg-slate-50 border border-slate-200 rounded-2xl hover:bg-slate-100 transition-all flex items-center gap-2">
             <i data-lucide="eye" class="w-4 h-4"></i>
             Voir mes Payements
-        </button>
+        </a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
