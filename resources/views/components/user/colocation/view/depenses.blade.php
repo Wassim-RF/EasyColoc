@@ -1,4 +1,4 @@
-<div class="space-y-6">
+<div class="space-y-6" id="depenses_section">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
         <button class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-slate-600 bg-slate-50 border border-slate-200 rounded-xl hover:bg-slate-100 transition-all">
             <i data-lucide="filter" class="w-4 h-4 text-slate-400"></i>

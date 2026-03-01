@@ -2,4 +2,5 @@
     @include('components.user.colocation.view.header')
     @include('components.user.colocation.view.buttons')
     @include('components.user.colocation.view.depenses')
+    @include('components.user.colocation.view.members')
 </main>
