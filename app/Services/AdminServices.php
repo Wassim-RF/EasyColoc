@@ -25,4 +25,12 @@
         public function totalUser() {
             return User::all()->count();
         }
+
+        public function toggleBan($id) {
+            $user = User::find($id);
+            
+            return $user->update([
+                'isBanned' => !$user->isBanned
+            ]);
+        }
     }

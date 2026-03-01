@@ -105,7 +105,9 @@
                                         <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-green-50 text-green-600 border border-green-100">ACTIF</span>
                                     </td>
                                     <td class="px-6 py-5 text-right">
-                                        <form action="#" method="POST" class="inline-block m-0">
+                                        <form action="{{ route('admin.banUser') }}" method="POST" class="inline-block m-0">
+                                            @csrf
+                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
                                             <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 border border-red-100 text-sm font-bold rounded-xl hover:bg-red-500 hover:text-white transition-all">
                                                 <i data-lucide="ban" class="w-4 h-4"></i> Bannir
                                             </button>
@@ -121,7 +123,9 @@
                                         <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-red-50 text-red-600 border border-red-100">BANNI</span>
                                     </td>
                                     <td class="px-6 py-5 text-right">
-                                        <form action="#" method="POST" class="inline-block m-0">
+                                        <form action="{{ route('admin.banUser') }}" method="POST" class="inline-block m-0">
+                                            @csrf
+                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
                                             <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 text-slate-700 text-sm font-bold rounded-xl hover:bg-slate-100 transition-all shadow-sm">
                                                 <i data-lucide="check-circle" class="w-4 h-4"></i> Débannir
                                             </button>

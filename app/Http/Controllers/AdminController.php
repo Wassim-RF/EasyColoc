@@ -15,4 +15,9 @@ class AdminController extends Controller
         $userBannedTotal = $adminServices->bannedUSerTotal();
         return view('admin.dashboard' , compact('allUSers' , 'colocationNumber' , 'totalDepenses' , 'totalUser' , 'userBannedTotal'));
     }
+
+    public function toggleBan(AdminServices $adminServices , Request $request) {
+        $adminServices->toggleBan($request->user_id);
+        return redirect()->back();
+    }
 }

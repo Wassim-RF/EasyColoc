@@ -44,6 +44,7 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::get('colocation/{id}' , [ColocationsController::class , 'index']);
 
     Route::get('admin/dashboard' , [AdminController::class , 'index'])->middleware(AdminVerification::class);
+    Route::post('banUser' , [AdminController::class , 'toggleBan'])->name('admin.banUser');
 });
 
 // Inviation
