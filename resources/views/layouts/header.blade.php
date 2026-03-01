@@ -26,9 +26,9 @@
             <div class="relative ml-2">
                 <button id="user-menu-button" class="flex items-center gap-3 p-1.5 pr-4 bg-slate-50 hover:bg-slate-100 border border-slate-100 rounded-2xl transition-all focus:outline-none">
                     <div class="w-8 h-8 bg-orange-500 rounded-xl flex items-center justify-center text-white font-bold text-sm">
-                        A
+                        {{ ucfirst(auth()->user()->name[0]) }}
                     </div>
-                        <span class="text-sm font-bold text-slate-700 hidden sm:block">Ahmed</span>
+                        <span class="text-sm font-bold text-slate-700 hidden sm:block">{{ ucfirst(auth()->user()->name) }}</span>
                         <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform" id="chevron-icon"></i>
                 </button>
 
