@@ -19,7 +19,9 @@ class InvitationController extends Controller
         $invitation = Invitation::where('token' , $token)->first();
         $targetedUser = User::where('email' , $invitation->email)->first();
         $user = Auth::user();
-        $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
+        if($user) {
+            $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
+        }
 
         if (!Auth::check()) {
             session(['invite_token' => $token]);

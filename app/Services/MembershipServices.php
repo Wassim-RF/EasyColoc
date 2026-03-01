@@ -15,4 +15,13 @@
         public function loginMember() {
             return Membership::where('member_id' , auth()->id())->first();
         }
+
+        public function quitterColocation($id) {
+            $member = Membership::find($id);
+
+            return $member->update([
+                'isLeft' => true,
+                'left_at' => now()
+            ]);
+        }
     }

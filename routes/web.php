@@ -41,6 +41,7 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('addDepense' , [DepenseController::class , 'store'])->name('depense.creation');
     Route::post('payement/toogleAsPayed' , [PaymentController::class , 'toogleAsPayed'])->name('payement.tooglePayed');
     Route::post('colocation/desactive' , [ColocationsController::class , 'desactiveColocation'])->name('colocation.desactive');
+    Route::post('colocation/quit' , [UserController::class , 'quitterColocation'])->name('colocation.quitter');
     Route::get('colocation/{id}' , [ColocationsController::class , 'index']);
 
     Route::get('admin/dashboard' , [AdminController::class , 'index'])->middleware(AdminVerification::class);

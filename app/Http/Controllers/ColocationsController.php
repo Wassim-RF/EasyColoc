@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ColocationRequest;
 use App\Mail\InviteMail;
 use App\Models\Colocations;
+use App\Models\Membership;
 use App\Services\CategoryServices;
 use App\Services\ColocationsServices;
 use Auth;
@@ -17,8 +18,9 @@ class ColocationsController extends Controller
     public function index($id) {
         $user = Auth::user();
         $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
+        $member = Membership::find($user->id)->where('colocation_id' , $id);
 
-        return view('user.colocation.voirColocation.home' , compact('hasActiveColocation' , 'id'));
+        return view('user.colocation.voirColocation.home' , compact('hasActiveColocation', 'id'));
     }
 
     public function store(ColocationsServices $colocationsServices , ColocationRequest $colocationRequest) {

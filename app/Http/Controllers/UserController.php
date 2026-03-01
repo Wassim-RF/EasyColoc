@@ -5,7 +5,9 @@
     use App\Models\Membership;
     use App\Services\CategoryServices;
     use App\Services\ColocationsServices;
+    use App\Services\MembershipServices;
     use Auth;
+    use Illuminate\Http\Request; 
 
     class UserController extends Controller {
         public function index() {
@@ -26,7 +28,7 @@
                 $membersNum = $colocationsServices->membersNum($colocation->id);
                 $isOwner= $membership->isOwner;
                 $payements = $colocationsServices->payements($colocation->id);
-                return view('user.colocation.home' , compact('colocation' , 'isOwner' , 'hasActiveColocation' , 'totalDepence' , 'totalDepenceMonth' , 'members' , 'membersNum' , 'payements'));
+                return view('user.colocation.home' , compact('colocation' , 'isOwner' , 'hasActiveColocation' , 'totalDepence' , 'totalDepenceMonth' , 'members' , 'membersNum' , 'payements' , 'membership'));
             }
         }
 
@@ -35,6 +37,11 @@
         }
 
         public function returnToHome() {
+            return redirect('home');
+        }
+
+        public function quitterColocation(Request $request , MembershipServices $membershipServices) {
+            $membershipServices->quitterColocation($request->member_id);
             return redirect('home');
         }
     }
