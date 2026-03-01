@@ -15,7 +15,7 @@
             $user = Auth::user();
             $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
             if (!$hasActiveColocation) {
-                return view('user.addColocation');
+                return view('user.notInColocation');
             } else {
                 $categories = $categoryServices->getAllCategory();
                 $membership = Membership::where('member_id' , $user->id)->first();
