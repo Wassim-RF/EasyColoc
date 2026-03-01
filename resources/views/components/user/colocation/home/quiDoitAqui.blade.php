@@ -1,5 +1,4 @@
 <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
-    
     <div class="flex items-center justify-between mb-8">
         <div>
             <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Qui doit à qui</h2>
@@ -12,23 +11,26 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        
-        <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.8rem] border border-slate-100 hover:bg-white hover:shadow-md hover:border-transparent transition-all group">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-bold shadow-sm shadow-blue-100">
-                    A
+            @foreach ($payements as $payement)
+                <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.8rem] border border-slate-100 hover:bg-white hover:shadow-md hover:border-transparent transition-all group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-bold shadow-sm shadow-blue-100">
+                            A
+                        </div>
+                        <div>
+                            <p class="text-[13px] font-semibold text-slate-500">Ahmed doit à <span class="text-slate-900">Yassine</span></p>
+                            <p class="text-lg font-black text-orange-500">120 <span class="text-xs font-bold uppercase">DH</span></p>
+                        </div>
+                    </div>
+                    @if ($isOwner)
+                        <button class="px-4 py-2 bg-green-500 text-white text-xs font-bold rounded-xl hover:bg-green-600 shadow-sm shadow-green-100 transition-colors opacity-0 group-hover:opacity-100 md:opacity-100">
+                            Marquer payé
+                        </button>
+                    @endif
                 </div>
-                <div>
-                    <p class="text-[13px] font-semibold text-slate-500">Ahmed doit à <span class="text-slate-900">Yassine</span></p>
-                    <p class="text-lg font-black text-orange-500">120 <span class="text-xs font-bold uppercase">DH</span></p>
-                </div>
-            </div>
-            <button class="px-4 py-2 bg-green-500 text-white text-xs font-bold rounded-xl hover:bg-green-600 shadow-sm shadow-green-100 transition-colors opacity-0 group-hover:opacity-100 md:opacity-100">
-                Marquer payé
-            </button>
-        </div>
+            @endforeach
 
-        <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.8rem] border border-slate-100 hover:bg-white hover:shadow-md hover:border-transparent transition-all group">
+        {{-- <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.8rem] border border-slate-100 hover:bg-white hover:shadow-md hover:border-transparent transition-all group">
             <div class="flex items-center gap-4">
                 <div class="w-12 h-12 bg-purple-500 rounded-2xl flex items-center justify-center text-white font-bold shadow-sm shadow-purple-100">
                     S
@@ -71,7 +73,7 @@
             <button class="px-4 py-2 bg-green-500 text-white text-xs font-bold rounded-xl hover:bg-green-600 shadow-sm shadow-green-100 transition-colors opacity-0 group-hover:opacity-100 md:opacity-100">
                 Marquer payé
             </button>
-        </div>
+        </div> --}}
 
     </div>
 </div>

@@ -8,14 +8,7 @@
             <span class="px-2.5 py-1 rounded-lg bg-green-50 text-green-600 text-xs font-bold ring-1 ring-inset ring-green-600/10">+12%</span>
         </div>
         <p class="text-slate-500 text-sm font-medium mb-1">Total des dépenses</p>
-        <h3 class="text-2xl font-black text-slate-900 tracking-tight">4 850 <span class="text-sm font-bold text-slate-400">DH</span></h3>
-        
-        <div class="mt-5">
-            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                <div class="bg-orange-500 h-full rounded-full" style="width: 72%"></div>
-            </div>
-            <p class="text-[11px] text-slate-400 mt-2 font-medium">72% du budget mensuel</p>
-        </div>
+        <h3 class="text-2xl font-black text-slate-900 tracking-tight">{{ $totalDepence }} <span class="text-sm font-bold text-slate-400">DH</span></h3>
     </div>
 
     <div class="bg-white rounded-4xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
@@ -41,13 +34,12 @@
             </div>
         </div>
         <p class="text-slate-500 text-sm font-medium mb-1">Nombre de membres</p>
-        <h3 class="text-2xl font-black text-slate-900 tracking-tight">4</h3>
+        <h3 class="text-2xl font-black text-slate-900 tracking-tight">{{ $membersNum }}</h3>
         
         <div class="flex -space-x-2 mt-5">
-            <div class="w-8 h-8 rounded-xl bg-orange-500 border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">Y</div>
-            <div class="w-8 h-8 rounded-xl bg-blue-500 border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">A</div>
-            <div class="w-8 h-8 rounded-xl bg-purple-500 border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">S</div>
-            <div class="w-8 h-8 rounded-xl bg-green-500 border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">O</div>
+            @foreach ($members as $member)
+                <div class="w-8 h-8 rounded-xl bg-blue-500 border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">A</div>
+            @endforeach
         </div>
     </div>
 
@@ -59,13 +51,6 @@
             <span class="px-2.5 py-1 rounded-lg bg-orange-50 text-orange-600 text-xs font-bold ring-1 ring-inset ring-orange-600/10">+5%</span>
         </div>
         <p class="text-slate-500 text-sm font-medium mb-1">Dépenses du mois</p>
-        <h3 class="text-2xl font-black text-slate-900 tracking-tight">1 230 <span class="text-sm font-bold text-slate-400">DH</span></h3>
-        
-        <div class="mt-5">
-            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                <div class="bg-blue-500 h-full rounded-full" style="width: 40%"></div>
-            </div>
-            <p class="text-[11px] text-slate-400 mt-2 font-medium">40% du total</p>
-        </div>
+        <h3 class="text-2xl font-black text-slate-900 tracking-tight">{{ $totalDepenceMonth }} <span class="text-sm font-bold text-slate-400">DH</span></h3>
     </div>
 </div>

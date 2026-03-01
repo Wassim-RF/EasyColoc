@@ -2,6 +2,7 @@
     namespace App\Services;
 
     use App\Models\Colocations;
+    use App\Models\Depense;
     use App\Models\Membership;
     use App\Models\User;
 
@@ -25,5 +26,36 @@
             return $colocation->update([
                 'isActive' => false
             ]);
+        }
+
+        public function totalDepense($id) {
+            return Depense::where('colocation_id' , $id)->sum('amount');
+        }
+
+        public function totalDepenseCeMois($id) {
+            return Depense::whereMonth('created_at' , now()->month)->whereYear('created_at' , now()->year)->where('colocation_id' , $id)->sum('amount');
+        }
+
+        public function membersNum($id) {
+            return Membership::where('colocation_id' , $id)->count();
+        }
+
+        public function members($id) {
+            return Membership::where('colocation_id' , $id)->get();
+        }
+
+        public function payements($id) {
+            $colocation = Colocations::with(['depenses.payments.receiver', 'depenses.user'])->findOrFail($id);
+
+            $payments = $colocation->depenses->flatMap(function($depense) {
+                return $depense->payments->map(function($payment) use ($depense) {
+                    $payment->payer = $depense->user;
+                    return $payment;
+                });
+            })
+            ->sortByDesc('created_at')
+            ->take(4);
+
+            return $payments;
         }
     }
