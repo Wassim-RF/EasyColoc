@@ -45,19 +45,22 @@
         }
 
         public function payements($id) {
-            $colocation = Colocations::with('depenses.payer')->findOrFail($id);
+    $colocation = Colocations::with('depenses.payments')->findOrFail($id);
 
-            $payments = $colocation->depenses->flatMap(function($depense) {
-                return $depense->payments->map(function($payment) use ($depense) {
-                    $payment->payer = $depense->user;
-                    return $payment;
-                });
-            })
-            ->sortByDesc('created_at')
-            ->take(4);
+    $payments = $colocation->depenses->flatMap(function($depense) {
+        return $depense->payments->filter(function($payment) {
+            return !$payment->isPayed; // <--- hna ghir li ma tkhallasouch
+        })->map(function($payment) {
+            // ajouter info user / payer
+            $payment->payer = $payment->depense->user ?? null;
+            return $payment;
+        });
+    })
+    ->sortByDesc('created_at')
+    ->take(4);
 
-            return $payments;
-        }
+    return $payments;
+}
 
         public function findColocation($id) {
             return Colocations::find($id);

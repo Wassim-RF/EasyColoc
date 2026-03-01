@@ -15,6 +15,7 @@ class Payment extends Model
     ];
 
     protected $casts = [
+        'isPayed' => 'boolean',
         'payed_at' => 'datetime'
     ];
 

@@ -21,8 +21,8 @@
                                 <i data-lucide="clock" class="w-7 h-7"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-black text-slate-900 tracking-tight">Dépense : <span class="text-orange-500 italic">Courses Carrefour</span></h3>
-                                <p class="text-sm text-slate-500 font-medium">Dû à <span class="font-bold text-slate-700 underline decoration-orange-200">Yassine</span> • Il y a 2 jours</p>
+                                <h3 class="text-lg font-black text-slate-900 tracking-tight">Dépense : <span class="text-orange-500 italic">{{ $payement->depense->title }}</span></h3>
+                                <p class="text-sm text-slate-500 font-medium">Dû <span class="font-bold text-slate-700 underline decoration-orange-200">Yassine</span> • Il y a 2 jours</p>
                             </div>
                         </div>
 

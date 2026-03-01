@@ -38,7 +38,7 @@
         
         <div class="flex -space-x-2 mt-5">
             @foreach ($members as $member)
-                <div class="w-8 h-8 rounded-xl bg-blue-500 border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">A</div>
+                <div class="w-8 h-8 rounded-xl bg-blue-500 border-2 border-white flex items-center justify-center text-white text-[10px] font-bold">{{ $member->user->name[0] }}</div>
             @endforeach
         </div>
     </div>
