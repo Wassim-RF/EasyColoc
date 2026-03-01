@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ColocationsController;
 use App\Http\Controllers\DepenseController;
@@ -40,6 +41,8 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('payement/toogleAsPayed' , [PaymentController::class , 'toogleAsPayed'])->name('payement.tooglePayed');
     Route::post('colocation/desactive' , [ColocationsController::class , 'desactiveColocation'])->name('colocation.desactive');
     Route::get('colocation/{id}' , [ColocationsController::class , 'index']);
+
+    Route::get('admin/dashboard' , [AdminController::class , 'index']);
 });
 
 // Inviation
