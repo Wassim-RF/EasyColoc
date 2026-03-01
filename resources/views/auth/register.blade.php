@@ -1,4 +1,4 @@
-<p>register</p>
+{{-- <p>register</p>
 <form action="{{ route('auth.register') }}" method="post">
     @csrf
     <input type="text" name="name" id="" placeholder="nom">
@@ -6,4 +6,8 @@
     <input type="password" name="password" id="" placeholder="password">
     <input type="password" name="password_confirmation" id="" placeholder="confirme password">
     <button type="submit">Entre</button>
-</form>
+</form> --}}
+@include('layouts.head')
+<body class="w-full bg-[#F8FAFC]">
+    @include('components.auth.register')
+</body>
