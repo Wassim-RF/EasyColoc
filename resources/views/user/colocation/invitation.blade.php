@@ -14,7 +14,7 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 
                 <div class="flex items-center gap-5">
-                    <div class="w-16 h-16 bg-orange-50 rounded-[1.5rem] flex items-center justify-center text-orange-500 shadow-sm border border-orange-100">
+                    <div class="w-16 h-16 bg-orange-50 rounded-3xl flex items-center justify-center text-orange-500 shadow-sm border border-orange-100">
                         <i data-lucide="home" class="w-8 h-8"></i>
                     </div>
                     <div>
