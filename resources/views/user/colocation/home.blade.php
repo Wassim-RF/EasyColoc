@@ -1,4 +1,4 @@
-<form action="{{ route('auth.logout') }}" method="post">
+{{-- <form action="{{ route('auth.logout') }}" method="post">
     @csrf
     <button type="submit">Logout</button>
 </form>
@@ -33,4 +33,8 @@
     </form>
 @endif
 
-<a href="{{ route('view.user.payements') }}">Voir Payements</a>
+<a href="{{ route('view.user.payements') }}">Voir Payements</a> --}}
+@include('layouts.head')
+<body class="w-full bg-[#F8FAFC]">
+    
+</body>

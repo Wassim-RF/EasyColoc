@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('colocation_id')->constrained('colocations');
             $table->boolean('isOwner')->default(false);
             $table->dateTime('joined_at')->useCurrent();
+            $table->dateTime('isLeft')->default(false);
             $table->dateTime('left_at')->nullable();
         });
     }
