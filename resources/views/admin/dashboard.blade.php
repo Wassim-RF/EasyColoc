@@ -32,7 +32,6 @@
     </header>
 
     <main class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
-        
         <div class="flex items-center justify-between mb-8">
             <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Administration globale</h1>
         </div>
@@ -45,7 +44,7 @@
                 </div>
                 <div>
                     <p class="text-slate-500 text-sm font-medium mb-1">Utilisateurs totaux</p>
-                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">1 248</h3>
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">{{ $totalUser }}</h3>
                 </div>
             </div>
 
@@ -55,7 +54,7 @@
                 </div>
                 <div>
                     <p class="text-slate-500 text-sm font-medium mb-1">Colocations totales</p>
-                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">312</h3>
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">{{ $colocationNumber }}</h3>
                 </div>
             </div>
 
@@ -65,7 +64,7 @@
                 </div>
                 <div>
                     <p class="text-slate-500 text-sm font-medium mb-1">Total des dépenses</p>
-                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">892 400 DH</h3>
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">{{ $totalDepenses }} DH</h3>
                 </div>
             </div>
 
@@ -75,7 +74,7 @@
                 </div>
                 <div>
                     <p class="text-slate-500 text-sm font-medium mb-1">Utilisateurs bannis</p>
-                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">7</h3>
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">{{ $userBannedTotal }}</h3>
                 </div>
             </div>
 
@@ -96,38 +95,41 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
-                        
-                        <tr class="hover:bg-slate-50/80 transition-colors">
-                            <td class="px-6 py-5 text-sm font-bold text-slate-900">Ahmed Belhaj</td>
-                            <td class="px-6 py-5 text-sm text-slate-500 font-medium">ahmed@email.com</td>
-                            <td class="px-6 py-5 text-sm font-bold text-slate-700 text-center">2</td>
-                            <td class="px-6 py-5">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-green-50 text-green-600 border border-green-100">ACTIF</span>
-                            </td>
-                            <td class="px-6 py-5 text-right">
-                                <form action="#" method="POST" class="inline-block m-0">
-                                    <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 border border-red-100 text-sm font-bold rounded-xl hover:bg-red-500 hover:text-white transition-all">
-                                        <i data-lucide="ban" class="w-4 h-4"></i> Bannir
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-
-                        <tr class="bg-slate-50/50 hover:bg-slate-50/80 transition-colors opacity-75 hover:opacity-100">
-                            <td class="px-6 py-5 text-sm font-bold text-slate-900">Yassine El Idrissi</td>
-                            <td class="px-6 py-5 text-sm text-slate-500 font-medium">yassine@email.com</td>
-                            <td class="px-6 py-5 text-sm font-bold text-slate-700 text-center">1</td>
-                            <td class="px-6 py-5">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-red-50 text-red-600 border border-red-100">BANNI</span>
-                            </td>
-                            <td class="px-6 py-5 text-right">
-                                <form action="#" method="POST" class="inline-block m-0">
-                                    <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 text-slate-700 text-sm font-bold rounded-xl hover:bg-slate-100 transition-all shadow-sm">
-                                        <i data-lucide="check-circle" class="w-4 h-4"></i> Débannir
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                        @foreach ($allUSers as $user)
+                            @if (!$user->isBanned)
+                                <tr class="hover:bg-slate-50/80 transition-colors">
+                                    <td class="px-6 py-5 text-sm font-bold text-slate-900">{{ $user->name }}</td>
+                                    <td class="px-6 py-5 text-sm text-slate-500 font-medium">{{ $user->email }}</td>
+                                    <td class="px-6 py-5 text-sm font-bold text-slate-700 text-center">{{ $user->colocations->count() }}</td>
+                                    <td class="px-6 py-5">
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-green-50 text-green-600 border border-green-100">ACTIF</span>
+                                    </td>
+                                    <td class="px-6 py-5 text-right">
+                                        <form action="#" method="POST" class="inline-block m-0">
+                                            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 border border-red-100 text-sm font-bold rounded-xl hover:bg-red-500 hover:text-white transition-all">
+                                                <i data-lucide="ban" class="w-4 h-4"></i> Bannir
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @else
+                                <tr class="bg-slate-50/50 hover:bg-slate-50/80 transition-colors opacity-75 hover:opacity-100">
+                                    <td class="px-6 py-5 text-sm font-bold text-slate-900">{{ $user->name }}</td>
+                                    <td class="px-6 py-5 text-sm text-slate-500 font-medium">{{ $user->email }}</td>
+                                    <td class="px-6 py-5 text-sm font-bold text-slate-700 text-center">{{ $user->colocations->count() }}</td>
+                                    <td class="px-6 py-5">
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-red-50 text-red-600 border border-red-100">BANNI</span>
+                                    </td>
+                                    <td class="px-6 py-5 text-right">
+                                        <form action="#" method="POST" class="inline-block m-0">
+                                            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 text-slate-700 text-sm font-bold rounded-xl hover:bg-slate-100 transition-all shadow-sm">
+                                                <i data-lucide="check-circle" class="w-4 h-4"></i> Débannir
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
 
                     </tbody>
                 </table>
