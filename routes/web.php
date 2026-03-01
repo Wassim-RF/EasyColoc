@@ -8,6 +8,7 @@ use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminVerification;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -42,7 +43,7 @@ Route::middleware(Authenticate::class)->group(function() {
     Route::post('colocation/desactive' , [ColocationsController::class , 'desactiveColocation'])->name('colocation.desactive');
     Route::get('colocation/{id}' , [ColocationsController::class , 'index']);
 
-    Route::get('admin/dashboard' , [AdminController::class , 'index']);
+    Route::get('admin/dashboard' , [AdminController::class , 'index'])->middleware(AdminVerification::class);
 });
 
 // Inviation

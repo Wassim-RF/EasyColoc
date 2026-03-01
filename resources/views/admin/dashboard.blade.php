@@ -1,121 +1,141 @@
-@include('layouts.head');
-<body class="w-full bg-[#F8FAFC]">
-    <main class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-        <div>
-            <h1 class="text-4xl font-black text-slate-900 tracking-tighter italic uppercase">Admin Control</h1>
-            <p class="text-slate-500 text-sm font-medium mt-1">Gestion globale de la plateforme EasyColoc.</p>
+@include('layouts.head')
+<body class="w-full bg-[#F8FAFC] antialiased text-slate-900">
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20"> <div class="shrink-0 flex items-center gap-3">
+                    <span class="text-3xl font-black text-orange-500 tracking-tighter transition-transform hover:scale-105 italic">
+                        EasyColoc
+                    </span>
+                    <div class="h-8 w-px bg-slate-200 mx-2 hidden sm:block"></div>
+                    <span class="hidden sm:block text-sm font-bold text-slate-400 uppercase tracking-widest mt-1">Admin</span>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="user-menu-button" class="flex items-center gap-3 p-1.5 pr-4 bg-white hover:bg-slate-50 border border-slate-200 rounded-[1rem] transition-all focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent shadow-sm">
+                        <div class="w-9 h-9 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 font-black text-sm">
+                            {{ ucfirst(auth()->user()->name[0]) }}
+                        </div>
+                        <span class="text-sm font-bold text-slate-700 hidden sm:block">{{ ucfirst(auth()->user()->name) }}</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform" id="chevron-icon"></i>
+                    </button>
+
+                    <form action="{{ route('auth.logout') }}" method="POST" class="hidden sm:flex m-0">
+                        @csrf
+                        <button type="submit" class="flex items-center gap-2 px-5 py-2.5 text-sm text-red-500 bg-white border border-red-100 rounded-[1rem] hover:bg-red-50 hover:border-red-200 font-bold transition-all shadow-sm">
+                            <i data-lucide="log-out" class="w-4 h-4"></i>
+                            Déconnexion
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
+    </header>
+
+    <main class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
         
-        <div class="flex items-center gap-3">
-            <div class="bg-white border border-slate-200 px-5 py-2.5 rounded-2xl flex items-center gap-3 shadow-sm">
-                <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                </span>
-                <span class="text-sm font-black text-slate-700 uppercase tracking-tight">System Online</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        <div class="bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-orange-500/5 transition-all group">
-            <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <i data-lucide="users" class="w-6 h-6 text-orange-500"></i>
-            </div>
-            <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">Utilisateurs</p>
-            <h3 class="text-3xl font-black text-slate-900 tracking-tighter italic">1,240</h3>
+        <div class="flex items-center justify-between mb-8">
+            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Administration globale</h1>
         </div>
 
-        <div class="bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all group">
-            <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <i data-lucide="home" class="w-6 h-6 text-blue-500"></i>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4 border border-red-100">
+                    <i data-lucide="users" class="w-6 h-6 text-red-500"></i>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-sm font-medium mb-1">Utilisateurs totaux</p>
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">1 248</h3>
+                </div>
             </div>
-            <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">Colocations</p>
-            <h3 class="text-3xl font-black text-slate-900 tracking-tighter italic">312</h3>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4 border border-red-100">
+                    <i data-lucide="home" class="w-6 h-6 text-red-500"></i>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-sm font-medium mb-1">Colocations totales</p>
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">312</h3>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4 border border-red-100">
+                    <i data-lucide="wallet" class="w-6 h-6 text-red-500"></i>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-sm font-medium mb-1">Total des dépenses</p>
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">892 400 DH</h3>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4 border border-red-100">
+                    <i data-lucide="shield-alert" class="w-6 h-6 text-red-500"></i>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-sm font-medium mb-1">Utilisateurs bannis</p>
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight">7</h3>
+                </div>
+            </div>
+
         </div>
 
-        <div class="bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-green-500/5 transition-all group">
-            <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <i data-lucide="banknote" class="w-6 h-6 text-green-500"></i>
-            </div>
-            <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">Flux d'argent</p>
-            <h3 class="text-3xl font-black text-slate-900 tracking-tighter italic">45,800 <span class="text-sm not-italic">DH</span></h3>
-        </div>
+        <h2 class="text-xl font-bold text-slate-900 mb-6 tracking-tight">Gestion des utilisateurs</h2>
 
-        <div class="bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-red-500/5 transition-all group">
-            <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <i data-lucide="alert-circle" class="w-6 h-6 text-red-500"></i>
-            </div>
-            <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">Invitations en attente</p>
-            <h3 class="text-3xl font-black text-slate-900 tracking-tighter italic">12</h3>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <div class="lg:col-span-2 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden">
-            <div class="p-8 border-b border-slate-50 flex items-center justify-between">
-                <h2 class="text-xl font-black text-slate-900 italic uppercase tracking-tight">Dernières Colocations</h2>
-                <button class="text-xs font-black text-orange-500 hover:underline tracking-widest uppercase">Voir tout</button>
-            </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
             <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
+                <table class="w-full text-left border-collapse whitespace-nowrap">
                     <thead>
-                        <tr class="bg-slate-50/50">
-                            <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Nom / Owner</th>
-                            <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Membres</th>
-                            <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Statut</th>
-                            <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Action</th>
+                        <tr class="bg-slate-50/80">
+                            <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-200">Nom</th>
+                            <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-200">Email</th>
+                            <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-200 text-center">Colocations</th>
+                            <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-200">Statut</th>
+                            <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest border-b border-slate-200 text-right">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-50">
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="px-8 py-5">
-                                <p class="font-bold text-slate-900 text-sm italic">Coloc des Amis</p>
-                                <p class="text-xs text-slate-400">by Ahmed</p>
+                    <tbody class="divide-y divide-slate-100">
+                        
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="px-6 py-5 text-sm font-bold text-slate-900">Ahmed Belhaj</td>
+                            <td class="px-6 py-5 text-sm text-slate-500 font-medium">ahmed@email.com</td>
+                            <td class="px-6 py-5 text-sm font-bold text-slate-700 text-center">2</td>
+                            <td class="px-6 py-5">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-green-50 text-green-600 border border-green-100">ACTIF</span>
                             </td>
-                            <td class="px-8 py-5 text-sm font-black text-slate-700">4</td>
-                            <td class="px-8 py-5">
-                                <span class="px-2.5 py-1 bg-green-50 text-green-600 text-[10px] font-black uppercase rounded-lg border border-green-100">Actif</span>
-                            </td>
-                            <td class="px-8 py-5">
-                                <button class="p-2 text-slate-300 hover:text-orange-500 transition-colors"><i data-lucide="more-horizontal" class="w-5 h-5"></i></button>
+                            <td class="px-6 py-5 text-right">
+                                <form action="#" method="POST" class="inline-block m-0">
+                                    <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 border border-red-100 text-sm font-bold rounded-xl hover:bg-red-500 hover:text-white transition-all">
+                                        <i data-lucide="ban" class="w-4 h-4"></i> Bannir
+                                    </button>
+                                </form>
                             </td>
                         </tr>
-                        </tbody>
+
+                        <tr class="bg-slate-50/50 hover:bg-slate-50/80 transition-colors opacity-75 hover:opacity-100">
+                            <td class="px-6 py-5 text-sm font-bold text-slate-900">Yassine El Idrissi</td>
+                            <td class="px-6 py-5 text-sm text-slate-500 font-medium">yassine@email.com</td>
+                            <td class="px-6 py-5 text-sm font-bold text-slate-700 text-center">1</td>
+                            <td class="px-6 py-5">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-red-50 text-red-600 border border-red-100">BANNI</span>
+                            </td>
+                            <td class="px-6 py-5 text-right">
+                                <form action="#" method="POST" class="inline-block m-0">
+                                    <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 text-slate-700 text-sm font-bold rounded-xl hover:bg-slate-100 transition-all shadow-sm">
+                                        <i data-lucide="check-circle" class="w-4 h-4"></i> Débannir
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    </tbody>
                 </table>
             </div>
         </div>
 
-        <div class="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm p-8">
-            <h2 class="text-xl font-black text-slate-900 italic uppercase tracking-tight mb-8">System Activity</h2>
-            <div class="space-y-6">
-                <div class="flex gap-4">
-                    <div class="w-1 h-12 bg-orange-500 rounded-full"></div>
-                    <div>
-                        <p class="text-sm font-bold text-slate-900 italic">Nouvel utilisateur inscrit</p>
-                        <p class="text-xs text-slate-400">Il y a 2 minutes • <span class="text-orange-500">Yassine</span></p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="w-1 h-12 bg-blue-500 rounded-full"></div>
-                    <div>
-                        <p class="text-sm font-bold text-slate-900 italic">Colocation créée</p>
-                        <p class="text-xs text-slate-400">Il y a 15 minutes • <span class="text-blue-500">L'Appart 22</span></p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="w-1 h-12 bg-green-500 rounded-full"></div>
-                    <div>
-                        <p class="text-sm font-bold text-slate-900 italic">Paiement confirmé</p>
-                        <p class="text-xs text-slate-400">Il y a 1 heure • 450 DH</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</main>
+    </main>
 </body>
+<script>
+    lucide.createIcons();
+</script>

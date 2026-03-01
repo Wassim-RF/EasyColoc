@@ -10,6 +10,7 @@
         </div>
 
         <form class="space-y-6" action="{{ route('auth.login') }}" method="POST">
+            @csrf
             <div>
                 <label for="email" class="block text-sm font-semibold text-slate-800 mb-2">
                 Email
