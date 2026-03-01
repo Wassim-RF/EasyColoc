@@ -1,7 +1,7 @@
 @include('layouts.head')
 <body class="w-full bg-[#F8FAFC]">
     @include('layouts.header')
-    @include('components.user.colocation.payements.main')
+    @include('components.user.colocation.view.main')
 </body>
 <script>
     lucide.createIcons();

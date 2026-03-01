@@ -7,12 +7,19 @@ use App\Mail\InviteMail;
 use App\Models\Colocations;
 use App\Services\CategoryServices;
 use App\Services\ColocationsServices;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Str;
 
 class ColocationsController extends Controller
 {
+    public function index() {
+        $user = Auth::user();
+        $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
+        return view('user.colocation.voirColocation.home' , compact('hasActiveColocation'));
+    }
+
     public function store(ColocationsServices $colocationsServices , ColocationRequest $colocationRequest) {
         $this->authorize('create' , Colocations::class);
         $data = [
