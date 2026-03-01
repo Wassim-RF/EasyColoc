@@ -24,4 +24,12 @@
                 return view('user.colocation.home' , compact('colocation' , 'isOwner' , 'categories'));
             }
         }
+
+        public function addColocationView() {
+            return view('user.addColocation');
+        }
+
+        public function returnToHome() {
+            return redirect('home');
+        }
     }

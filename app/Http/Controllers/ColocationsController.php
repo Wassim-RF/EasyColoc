@@ -21,7 +21,7 @@ class ColocationsController extends Controller
 
         $colocationsServices->creation($data);
 
-        return redirect()->back()->with('succes' , 'creation du colocation en success');
+        return redirect('home')->with('succes' , 'creation du colocation en success');
     }
 
     public function desactiveColocation(Request $request , ColocationsServices $colocationsServices) {

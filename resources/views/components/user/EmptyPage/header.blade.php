@@ -8,10 +8,10 @@
             </div>
 
         <div class="flex items-center gap-3">
-            <button class="hidden md:flex items-center gap-2 px-5 py-2 text-sm font-bold text-slate-700 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all">
+            <a href="{{ route('view.user.addColocation') }}" class="hidden md:flex items-center gap-2 px-5 py-2 text-sm font-bold text-slate-700 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all">
                 <i data-lucide="plus" class="w-4 h-4"></i>
                 Créer une colocation
-            </button>
+            </a>
 
             <div class="relative ml-2">
                 <button id="user-menu-button" class="flex items-center gap-3 p-1.5 pr-4 bg-slate-50 hover:bg-slate-100 border border-slate-100 rounded-2xl transition-all focus:outline-none">

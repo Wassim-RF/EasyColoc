@@ -20,9 +20,9 @@
                     <p class="text-slate-500 mb-8 leading-relaxed">
                         Commencez une nouvelle aventure ! Créez un groupe, invitez vos amis et commencez à gérer vos dépenses.
                     </p>
-                    <button class="w-full py-4 bg-orange-500 text-white rounded-2xl font-bold hover:bg-orange-600 transition-colors shadow-md">
+                    <a href="{{ route('view.user.addColocation') }}" class="w-full inline-block text-center py-4 bg-orange-500 text-white rounded-2xl font-bold hover:bg-orange-600 transition-colors shadow-md">
                         C'est parti
-                    </button>
+                    </a>
                 </div>
             </div>
 

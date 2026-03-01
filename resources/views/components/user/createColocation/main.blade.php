@@ -1,6 +1,6 @@
 <main class="min-h-[calc(100vh-64px)] flex items-center justify-center bg-slate-50/50 px-4 py-12">
     <div class="max-w-xl w-full">
-        <a href="#" class="inline-flex items-center gap-2 text-slate-500 hover:text-orange-500 mb-8 transition-colors font-medium">
+        <a href="{{ route('view.user.returnToHome') }}" class="inline-flex items-center gap-2 text-slate-500 hover:text-orange-500 mb-8 transition-colors font-medium">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             Retour
         </a>
@@ -19,7 +19,7 @@
                     </p>
                 </div>
 
-                <form action="#" method="POST" class="space-y-8">
+                <form action="{{ route('colocation.creation') }}" method="POST" class="space-y-8">
                     @csrf
                     
                     <div>
