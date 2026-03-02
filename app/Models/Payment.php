@@ -23,7 +23,7 @@ class Payment extends Model
         return $this->belongsTo(Depense::class , 'depense_id');
     }
 
-    public function receiveir() {
+    public function receiver() {
         return $this->belongsTo(User::class , 'receiver_id');
     }
 }

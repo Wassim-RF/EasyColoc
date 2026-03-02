@@ -11,8 +11,7 @@ class Membership extends Model
         'colocation_id',
         'isOwner',
         'joined_at',
-        'isLeft',
-        'left_at'
+        'solde'
     ];
 
     public $timestamps = false;

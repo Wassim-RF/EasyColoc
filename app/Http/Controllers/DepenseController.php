@@ -23,6 +23,10 @@ class DepenseController extends Controller
     }
 
     public function store(Request $request , DepenseServices $depenseServices , ColocationsServices $colocationsServices , PayementServices $payementServices , MembershipServices $membershipServices) {
+        $user = Auth::user();
+        $user->memberships()->update([
+            'solde' => $user->solde - $request->amount
+        ]);
         $members = $colocationsServices->getAllMemberInColocation($request->colocation_id);
         $loginMember = $membershipServices->loginMember();
         $data = [
@@ -36,11 +40,11 @@ class DepenseController extends Controller
         $depense = $depenseServices->creation($data);
 
         $memberNum = count($members);
-
         $payementData = [];
 
         foreach($members as $member) {
             if($member->id != $loginMember->id) {
+                $membershipServices->addSolde($request->amount / $memberNum , $member->id);
                 $payementData[] = [
                     'amount' => $request->amount / $memberNum,
                     'depense_id' => $depense->id,

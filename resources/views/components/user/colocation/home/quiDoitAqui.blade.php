@@ -15,10 +15,10 @@
                 <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.8rem] border border-slate-100 hover:bg-white hover:shadow-md hover:border-transparent transition-all group">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-bold shadow-sm shadow-blue-100">
-                            {{ ucfirst($payement->receiveir->name[0]) }}
+                            {{ ucfirst($payement->receiver->name[0]) }}
                         </div>
                         <div>
-                            <p class="text-[13px] font-semibold text-slate-500">{{ ucfirst($payement->receiveir->name) }} doit à <span class="text-slate-900">Yassine</span></p>
+                            <p class="text-[13px] font-semibold text-slate-500">{{ ucfirst($payement->receiver->name) }} doit à <span class="text-slate-900">Yassine</span></p>
                             <p class="text-lg font-black text-orange-500">{{ $payement->amount }} <span class="text-xs font-bold uppercase">DH</span></p>
                         </div>
                     </div>

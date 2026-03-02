@@ -19,9 +19,20 @@
         public function quitterColocation($id) {
             $member = Membership::find($id);
 
+            return $member->delete();
+        }
+
+        public function addSolde($solde , $id) {
+            $member = Membership::find($id);
             return $member->update([
-                'isLeft' => true,
-                'left_at' => now()
+                'solde' => $member->solde + $solde
+            ]);
+        }
+
+        public function subSolde($solde , $id) {
+            $member = Membership::find($id);
+            return $member->update([
+                'solde' => $member->solde - $solde
             ]);
         }
     }

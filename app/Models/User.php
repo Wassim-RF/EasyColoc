@@ -61,8 +61,7 @@ class User extends Authenticatable
             'colocation_id'
         )->withPivot(
             'isOwner' , 
-            'joined_at' , 
-            'left_at'
+            'joined_at'
         );
     }
 

@@ -18,7 +18,6 @@ class ColocationsController extends Controller
     public function index($id) {
         $user = Auth::user();
         $hasActiveColocation = $user->colocations()->where('isActive' , true)->exists();
-        $member = Membership::find($user->id)->where('colocation_id' , $id);
 
         return view('user.colocation.voirColocation.home' , compact('hasActiveColocation', 'id'));
     }

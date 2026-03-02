@@ -41,6 +41,16 @@
         }
 
         public function quitterColocation(Request $request , MembershipServices $membershipServices) {
+            $user = Auth::user();
+            if ($user->memberships()->first()->solde !== 0 ) {
+                $user->update([
+                    'reputation' => $user->reputation - 1
+                ]);
+            } else {
+                $user->update([
+                    'reputation' => $user->reputation + 1
+                ]);
+            }
             $membershipServices->quitterColocation($request->member_id);
             return redirect('home');
         }

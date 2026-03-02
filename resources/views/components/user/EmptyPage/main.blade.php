@@ -2,7 +2,7 @@
     <div class="max-w-4xl w-full">
         <div class="text-center mb-12">
             <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
-                Bienvenue Ahmed ! 👋
+                Bienvenue {{ auth()->user()->name }} ! 👋
             </h1>
             <p class="text-slate-500 text-lg max-w-md mx-auto leading-relaxed">
                 Vous n'avez pas encore de colocation. Que souhaitez-vous faire aujourd'hui ?
